@@ -21,5 +21,6 @@ RUN             cd cgminer-2.11.4 && \
                 ./configure --enable-cpumining --disable-opencl && \
                 make
 
-WORKDIR        ~/cgminer-2.11.4
+
+WORKDIR         /cgminer-2.11.4
 ENTRYPOINT      ["./cgminer"]
