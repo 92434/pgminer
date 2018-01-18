@@ -1,0 +1,23 @@
+#
+# Dockerfile for cpuminer
+# usage: docker run creack/cpuminer --url xxxx --user xxxx --pass xxxx
+# ex: docker run creack/cpuminer --url stratum+tcp://ltc.pool.com:80 --user creack.worker1 --pass abcdef
+#
+#
+
+FROM            ubuntu:14.04
+MAINTAINER      Guillaume J. Charmes <guillaume@charmes.net>
+
+RUN             apt-get update -qq && \
+                apt-get install -qqy unzip build-essential libncurses5-dev libcurl4-openssl-dev autoreconf
+
+RUN             wget https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
+RUN             unzip v2.11.4
+RUN             cd cgminer-2.11.4 && \
+                chmod +x autogen.sh && \
+                ./autogen.sh && \
+                ./configure --enable-cpumining --disable-opencl && \
+                make
+
+WORKDIR        ~/cgminer-2.11.4
+ENTRYPOINT      ["./cgminer"]
