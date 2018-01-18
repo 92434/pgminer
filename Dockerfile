@@ -18,7 +18,7 @@ RUN             unzip cgminer.zip && \
 RUN             cd cgminer-2.11.4 && \
                 ./autogen.sh && \
                 ./configure --enable-cpumining --disable-opencl && \
-                make
+                make && \
+                make insatll
 
-WORKDIR         /cgminer-2.11.4
-CMD      ["bash"]
+ENTRYPOINT      ["cgminer"]
