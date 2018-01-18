@@ -8,8 +8,11 @@
 FROM            ubuntu:14.04
 MAINTAINER      Guillaume J. Charmes <guillaume@charmes.net>
 
-RUN             apt-get update -qq && \
-                apt-get install -qqy unzip build-essential libncurses5-dev libcurl4-openssl-dev autoreconf
+RUN             apt-get update -qq
+
+RUN             apt-get install -qqy autoconf automake libtool
+RUN             apt-get install -qqy build-essential libncurses5-dev libcurl4-openssl-dev
+RUN             apt-get install -qqy autoreconf
 
 RUN             wget https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
 RUN             unzip v2.11.4
