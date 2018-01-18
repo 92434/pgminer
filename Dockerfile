@@ -14,8 +14,8 @@ RUN             apt-get install -qqy autoconf automake libtool wget
 RUN             apt-get install -qqy build-essential libncurses5-dev libcurl4-openssl-dev
 RUN             apt-get clean
 
-RUN             wget https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
-RUN             unzip v2.11.4
+RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
+RUN             unzip cgminer.zip
 RUN             cd cgminer-2.11.4 && \
                 chmod +x autogen.sh && \
                 ./autogen.sh && \
