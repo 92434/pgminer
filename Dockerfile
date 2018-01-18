@@ -9,9 +9,7 @@ FROM            ubuntu:14.04
 MAINTAINER      Guillaume J. Charmes <guillaume@charmes.net>
 
 RUN             apt-get update -qq
-
-RUN             apt-get install -qqy autoconf automake libtool wget unzip
-RUN             apt-get install -qqy build-essential libncurses5-dev libcurl4-openssl-dev
+RUN             apt-get install -qqy autoconf automake libtool wget unzip build-essential libncurses5-dev libcurl4-openssl-dev
 RUN             apt-get clean
 
 RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
@@ -21,6 +19,5 @@ RUN             cd cgminer-2.11.4 && \
                 ./configure --enable-cpumining --disable-opencl && \
                 make
 
-
-WORKDIR         /cgminer-2.11.4
-ENTRYPOINT      ["bash"]
+WORKDIR         /cgminer
+ENTRYPOINT      ["./cgminer"]
