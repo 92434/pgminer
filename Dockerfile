@@ -5,20 +5,23 @@
 #
 #
 
-FROM            ubuntu:14.04
-MAINTAINER      Guillaume J. Charmes <guillaume@charmes.net>
+FROM  ubuntu:14.04
+RUN apt-get update && apt-get install -y \ 
+  autoconf \
+  automake \
+  libtool \
+  wget \
+  unzip \
+  build-essential \
+  libncurses5-dev \
+  libcurl4-openssl-dev
+RUN apt-get clean
+RUN cd /; \
+wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4 && unzip cgminer.zip; \
+  cd /cgminer-2.11.4; \
+  ./autogen.sh; \
+  ./configure --enable-cpumining --disable-opencl; \
+  make; \
+  make install;
 
-RUN             apt-get update -qq
-RUN             apt-get install -qqy autoconf automake libtool wget unzip build-essential libncurses5-dev libcurl4-openssl-dev
-RUN             apt-get clean
-
-RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
-RUN             unzip cgminer.zip && \
-                pwd
-RUN             cd cgminer-2.11.4 && \
-                ./autogen.sh && \
-                ./configure --enable-cpumining --disable-opencl && \
-                make && \
-                make install
-
-ENTRYPOINT      ["cgminer"]
+CMD ["/init.sh"]
