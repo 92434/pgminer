@@ -10,7 +10,7 @@ MAINTAINER      Guillaume J. Charmes <guillaume@charmes.net>
 
 RUN             apt-get update -qq
 
-RUN             apt-get install -qqy autoconf automake libtool wget
+RUN             apt-get install -qqy autoconf automake libtool wget unzip
 RUN             apt-get install -qqy build-essential libncurses5-dev libcurl4-openssl-dev
 RUN             apt-get clean
 
