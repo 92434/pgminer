@@ -16,10 +16,9 @@ RUN             apt-get clean
 
 RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
 RUN             unzip cgminer.zip
-RUN             cd cgminer-2.11.4
-RUN             chmod +x autogen.sh
-RUN             ./autogen.sh
-RUN             ./configure --enable-cpumining --disable-opencl
+RUN             chmod +x ~/cgminer-2.11.4/autogen.sh
+RUN             ~/cgminer-2.11.4/autogen.sh
+RUN             ~/cgminer-2.11.4/configure --enable-cpumining --disable-opencl
 RUN             make
 
 WORKDIR        ~/cgminer-2.11.4
