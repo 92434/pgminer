@@ -19,6 +19,6 @@ RUN             cd cgminer-2.11.4 && \
                 ./autogen.sh && \
                 ./configure --enable-cpumining --disable-opencl && \
                 make && \
-                make insatll
+                make install
 
 ENTRYPOINT      ["cgminer"]
