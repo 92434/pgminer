@@ -23,5 +23,5 @@ wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4 && 
   ./configure --enable-cpumining --disable-opencl; \
   make; \
   make install;
-
+ADD ./init.sh /init.sh
 CMD ["/init.sh"]
