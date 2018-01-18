@@ -15,11 +15,11 @@ RUN             apt-get install -qqy build-essential libncurses5-dev libcurl4-op
 RUN             apt-get clean
 
 RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
-RUN             unzip cgminer.zip
-RUN             chmod +x ~/cgminer-2.11.4/autogen.sh
-RUN             ~/cgminer-2.11.4/autogen.sh
-RUN             ~/cgminer-2.11.4/configure --enable-cpumining --disable-opencl
 RUN             make
+RUN             cd cgminer-2.11.4 && \
+                ./autogen.sh && \
+                ./configure --enable-cpumining --disable-opencl && \
+                make
 
 WORKDIR        ~/cgminer-2.11.4
 ENTRYPOINT      ["./cgminer"]
