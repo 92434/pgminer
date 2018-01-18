@@ -21,4 +21,4 @@ RUN             cd cgminer-2.11.4 && \
                 make
 
 WORKDIR         /cgminer-2.11.4
-ENTRYPOINT      ["bash"]
+CMD      ["bash"]
