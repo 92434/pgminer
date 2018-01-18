@@ -15,7 +15,7 @@ RUN             apt-get install -qqy build-essential libncurses5-dev libcurl4-op
 RUN             apt-get clean
 
 RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
-RUN             make
+RUN             unzip cgminer.zip
 RUN             cd cgminer-2.11.4 && \
                 ./autogen.sh && \
                 ./configure --enable-cpumining --disable-opencl && \
