@@ -13,7 +13,8 @@ RUN             apt-get install -qqy autoconf automake libtool wget unzip build-
 RUN             apt-get clean
 
 RUN             wget -O cgminer.zip https://codeload.github.com/ckolivas/cgminer/zip/v2.11.4
-RUN             unzip cgminer.zip
+RUN             unzip cgminer.zip && \
+                pwd
 RUN             cd cgminer-2.11.4 && \
                 ./autogen.sh && \
                 ./configure --enable-cpumining --disable-opencl && \
